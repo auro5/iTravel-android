@@ -15,7 +15,7 @@ app.get('/geocode', function(req, resp) {
    var term = req.query.locterm;
 
    //console.log(term);
-   request.get('https://maps.googleapis.com/maps/api/geocode/json?address='+term+'&key=AIzaSyC8QKLRnz5eB9_-Kae1nkF-rX6HSCSZ6O4' , { json: true }, (err, res, body) => {
+   request.get('https://maps.googleapis.com/maps/api/geocode/json?address='+term+'&key=xxxxxxxxxxxxxxxx' , { json: true }, (err, res, body) => {
 	if (err) {
         resp.write("error");
 		resp.end(); 
@@ -34,7 +34,7 @@ app.get('/places', function(req, resp) {
    var lat = req.query.latitude;
    var lon = req.query.longitude;
    console.log(key+cat+dist+lat+lon);
-   request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+lat+','+lon+'&radius='+dist+'&type='+cat+'&keyword='+key+'&key=AIzaSyC8QKLRnz5eB9_-Kae1nkF-rX6HSCSZ6O4' , { json: true }, (err, res, body) => {
+   request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+lat+','+lon+'&radius='+dist+'&type='+cat+'&keyword='+key+'&key=xxxxxxxxxxx' , { json: true }, (err, res, body) => {
   if (err) {
         resp.write("error");
 		resp.end(); 
@@ -49,7 +49,7 @@ app.get('/places', function(req, resp) {
 app.get('/nextpage', function(req, resp) {
    var token = req.query.token;
 console.log(token);
-   request.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken='+token+'&key=AIzaSyC8QKLRnz5eB9_-Kae1nkF-rX6HSCSZ6O4' , { json: true }, (err, res, body) => {
+   request.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken='+token+'&key=xxxxxxxxxxxxxxxxxxxxx' , { json: true }, (err, res, body) => {
 	if (err) {
         resp.write("error");
 		resp.end(); 
@@ -64,7 +64,7 @@ console.log(token);
  
 const yelp = require('yelp-fusion');
  
-const client = yelp.client('ucb60LdI6RZWwIG_PH0_Fq2CTDSjpW2W7JVgRfDEIW9mlGbVU7o-ksTaxr7DDDPDNQgSE8j4Wnssa4sd5mAyQRtj9iuJNd3r16x_ntwPCUuLY4d6LoOqKDncPj7EWnYx');
+const client = yelp.client('xxxxxxxxxxxxxxxxxxxxxxxx');
 app.get('/yelpbm', function(req, resp) {
 
    client.businessMatch('best', {
@@ -81,18 +81,7 @@ app.get('/yelpbm', function(req, resp) {
   resp.end();
 });
    
-   
-   /*console.log(name);
-   request.get('https://api.yelp.com/v3/businesses/matches/best?name='+name+'&address1='+addr+'&city='+city+'&state'+state+'country'+country , { headers :{'Authorization': auth} }, (err, res, body) => {
-	if (err) {
-        resp.write("error");
-		resp.end(); 
-	}
-  
-  resp.json(body);
-  resp.end();
-});*/
-  
+
 });
 
 app.get('/yelpbr', function(req, resp) {
